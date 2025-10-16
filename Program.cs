@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var t = new Transaction("Grocery Shopping", 150.75m, "Food", "2024-06-15");
+            t.ShowInfo();
         }
     }
 }
