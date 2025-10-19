@@ -26,14 +26,18 @@ namespace PersonalBudgetTracker
             // Om det inte finns några transaktioner så gör vi följande : 
             if (transactions.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Det finns inga transaktioner ännu.");
+                Console.ResetColor();
                 return;
             }
             // Annars kör vi en for loop. Som visar varje transaktion
             for (int t = 0; t < transactions.Count; t++)
             {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write($"#{t}: "); // Vi visar upp numret på transaktionen 
                 transactions[t].ShowInfo(); // vi visar all information om transaktionen
+                Console.ResetColor();
             }
         }
 

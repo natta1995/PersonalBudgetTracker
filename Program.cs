@@ -18,13 +18,14 @@
             while (running)
             {
                 // Vi skriver ut valen användaren kan göra i konsollen (Menyn):
-
-                Console.WriteLine("\n--- Personal Budget Tracker ---");
-                Console.WriteLine("1. Lägg till transaktion");
-                Console.WriteLine("2. Visa alla transaktioner");
-                Console.WriteLine("3. Visa total balans");
-                Console.WriteLine("4. Ta bort transaktion");
-                Console.WriteLine("5. Avsluta");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\n--- Personal Budget Tracker ---\n");
+                Console.WriteLine("[1] + Lägg till transaktion ");
+                Console.WriteLine("[2] # Visa alla transaktioner ");
+                Console.WriteLine("[3] $ Visa total balans ");
+                Console.WriteLine("[4] - Ta bort transaktion ");
+                Console.WriteLine("[5] X Avsluta \n");
+                Console.WriteLine("------------------------------\n");
                 Console.Write("Välj ett alternativ: ");
 
                 // Vi tar stringvärdet (allt i konsollen är string som i så fall får omvandlas, men inte här. vi tar bara värdet ifrån konsollen och sätter det som "choise"
@@ -55,7 +56,9 @@
                         // Skapar transaktion och lägger i lista
                         Transaction ny = new Transaction(desc, amount, category, date);
                         budget.AddTransaction(ny);
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine("Transaktionen har lagts till.");
+                        Console.ResetColor();
                         break;
 
 
@@ -67,28 +70,35 @@
 
                     // Visa total balans
                     case "3":
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine($"Total balans: {budget.CalculateBalance()}");
+                        Console.ResetColor();
                         break;
 
 
                     // Ta bort transaktion
                     case "4":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write("Ange index att ta bort: ");
                         int index = Convert.ToInt32(Console.ReadLine()); // omvandlar string till int
                         bool removed = budget.DeleteTransaction(index); // delete transaktionen med den indexen OM vilkoren (se BudgetManager.cs)
                         Console.WriteLine(removed ? "Transaktionen togs bort." : "Ogiltigt index.");
+                        Console.ResetColor();
                         break;
 
 
                     // Exit, (avsluta loopen)
                     case "5":
                         running = false;
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Programmet avslutas...");
+                        Console.ResetColor();
                         break;
+
+
                     // Default som fångar upp ifall inte valet matchar något av ovanstående.
-                   
-                    
                     default:
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Ogiltigt val, försök igen.");
                         break;
                 }
