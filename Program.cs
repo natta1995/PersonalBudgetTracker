@@ -44,7 +44,7 @@
                         Console.Write("Beskrivning: "); // Be om input
                         string desc = Console.ReadLine(); // ta emot input 
 
-                        Console.Write("Belopp (positivt = inkomst, negativt = utgift): "); // Be om input
+                        Console.Write("Belopp (inkomst + , negativt -): "); // Be om input
                         decimal amount = Convert.ToDecimal(Console.ReadLine());     // Ta emot input osv
 
                         Console.Write("Kategori: ");
